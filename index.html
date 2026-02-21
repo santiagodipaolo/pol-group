@@ -14,7 +14,8 @@
       --text: #fafafa;
       --text-secondary: #a1a1aa;
       --text-muted: #63636e;
-      --accent: #e4e4e7;
+      --glow-1: #3b82f6;
+      --glow-2: #2563eb;
     }
 
     html { scroll-behavior: smooth; }
@@ -29,6 +30,29 @@
     }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+    /* ── GRAIN OVERLAY ───────────────────── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: .03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    /* ── FADE IN ON SCROLL ───────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ── NAV ─────────────────────────────── */
     nav {
@@ -88,18 +112,37 @@
       text-align: center;
       padding: 120px 32px 80px;
       position: relative;
+      overflow: hidden;
     }
+    /* ambient glow orbs */
     .hero::before {
       content: '';
       position: absolute;
-      top: 0;
+      top: -20%;
       left: 50%;
       transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(255,255,255,.02) 0%, transparent 70%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(59,130,246,.08) 0%, rgba(37,99,235,.04) 40%, transparent 70%);
       pointer-events: none;
+      animation: hero-glow 8s ease-in-out infinite alternate;
     }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(37,99,235,.06) 0%, transparent 60%);
+      pointer-events: none;
+      animation: hero-glow 10s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes hero-glow {
+      0% { opacity: .6; transform: translateX(-50%) scale(1); }
+      100% { opacity: 1; transform: translateX(-50%) scale(1.15); }
+    }
+
     .hero-overline {
       font-size: .75rem;
       font-weight: 500;
@@ -107,6 +150,7 @@
       text-transform: uppercase;
       color: var(--text-muted);
       margin-bottom: 32px;
+      position: relative;
     }
     .hero h1 {
       font-size: clamp(3rem, 7vw, 5.5rem);
@@ -115,10 +159,20 @@
       line-height: 1.05;
       color: var(--text);
       margin-bottom: 28px;
+      position: relative;
     }
     .hero h1 .thin {
       font-weight: 200;
-      color: var(--text-secondary);
+      background: linear-gradient(135deg, var(--text-secondary) 0%, #3b82f6 50%, var(--text-secondary) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-shift 6s ease-in-out infinite;
+    }
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% center; }
+      50% { background-position: 100% center; }
     }
     .hero p {
       font-size: 1.125rem;
@@ -126,6 +180,7 @@
       max-width: 560px;
       line-height: 1.7;
       margin-bottom: 48px;
+      position: relative;
     }
     .hero-cta {
       display: inline-flex;
@@ -136,6 +191,7 @@
       color: var(--text-muted);
       text-decoration: none;
       transition: color .2s;
+      position: relative;
     }
     .hero-cta:hover { color: var(--text); }
     .hero-cta svg { transition: transform .2s; }
@@ -171,7 +227,7 @@
       font-weight: 500;
       letter-spacing: .15em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--glow-1);
       margin-bottom: 20px;
     }
     .companies-header h2 {
@@ -203,9 +259,23 @@
       color: inherit;
       transition: background .3s;
       cursor: default;
+      position: relative;
+    }
+    .company-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--glow-1), var(--glow-2));
+      opacity: 0;
+      transition: opacity .3s;
     }
     .company-item:hover {
       background: var(--bg-elevated);
+    }
+    .company-item:hover::before {
+      opacity: 1;
     }
 
     .company-name {
@@ -213,6 +283,13 @@
       font-weight: 700;
       letter-spacing: -.02em;
       color: var(--text);
+      transition: color .3s;
+    }
+    .company-item:hover .company-name {
+      background: linear-gradient(135deg, var(--text), var(--glow-1));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .company-description {
@@ -232,6 +309,11 @@
       border: 1px solid var(--border);
       border-radius: 100px;
       white-space: nowrap;
+      transition: border-color .3s, color .3s;
+    }
+    .company-item:hover .company-tag {
+      border-color: rgba(59,130,246,.3);
+      color: var(--text-secondary);
     }
 
     /* ── DETAIL SECTIONS ─────────────────── */
@@ -249,7 +331,10 @@
       font-weight: 500;
       letter-spacing: .15em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      background: linear-gradient(135deg, var(--glow-1), var(--glow-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 20px;
     }
     .detail-grid h3 {
@@ -274,11 +359,19 @@
       display: flex;
       gap: 16px;
       align-items: flex-start;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: background .3s, border-color .3s;
+    }
+    .detail-points li:hover {
+      background: var(--bg-elevated);
+      border-color: var(--border);
     }
     .detail-points .num {
       font-size: .75rem;
       font-weight: 600;
-      color: var(--text-muted);
+      color: var(--glow-1);
       min-width: 24px;
       padding-top: 2px;
       font-variant-numeric: tabular-nums;
@@ -296,11 +389,20 @@
     /* ── STATS ROW ────────────────────────── */
     .stats {
       padding: 80px 0;
+      position: relative;
+    }
+    .stats::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(59,130,246,.02), transparent);
+      pointer-events: none;
     }
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 32px;
+      position: relative;
     }
     .stat-item {
       text-align: center;
@@ -309,14 +411,53 @@
       font-size: 2.5rem;
       font-weight: 700;
       letter-spacing: -.03em;
-      color: var(--text);
       font-variant-numeric: tabular-nums;
       margin-bottom: 6px;
+      background: linear-gradient(135deg, var(--text) 30%, var(--glow-1));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     .stat-label {
       font-size: .8125rem;
       color: var(--text-muted);
       letter-spacing: .03em;
+    }
+
+    /* ── CTA SECTION ──────────────────────── */
+    .cta-section {
+      text-align: center;
+      position: relative;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(37,99,235,.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      padding: 12px 32px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all .3s;
+      position: relative;
+    }
+    .cta-btn:hover {
+      border-color: rgba(59,130,246,.4);
+      box-shadow: 0 0 24px rgba(59,130,246,.1);
+      background: var(--bg-elevated);
     }
 
     /* ── FOOTER ────────────────────────────── */
@@ -392,7 +533,6 @@
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero">
-  <p class="hero-overline">Building the infrastructure of finance</p>
   <h1>We build<br><span class="thin">financial technology</span></h1>
   <p>POL Group is a holding company investing in and operating businesses across capital markets, market making, decentralized finance, risk infrastructure, and real-world asset coordination.</p>
   <a href="#companies" class="hero-cta">
@@ -406,12 +546,12 @@
 <hr class="divider">
 <section class="companies" id="companies">
   <div class="container">
-    <div class="companies-header">
+    <div class="companies-header fade-in">
       <p class="overline">Portfolio</p>
       <h2>Five companies,<br>one vision.</h2>
     </div>
 
-    <div class="company-list">
+    <div class="company-list fade-in">
       <div class="company-item">
         <div class="company-name">Liquid</div>
         <div class="company-description">
@@ -459,7 +599,7 @@
 <hr class="divider">
 <section class="stats">
   <div class="container">
-    <div class="stats-grid">
+    <div class="stats-grid fade-in">
       <div class="stat-item">
         <div class="stat-value">5</div>
         <div class="stat-label">Operating Companies</div>
@@ -484,7 +624,7 @@
 <hr class="divider">
 <section class="detail-section" id="about">
   <div class="container">
-    <div class="detail-grid">
+    <div class="detail-grid fade-in">
       <div>
         <p class="detail-label">Liquid</p>
         <h3>Liquidity, engineered.</h3>
@@ -512,7 +652,7 @@
 <hr class="divider">
 <section class="detail-section">
   <div class="container">
-    <div class="detail-grid">
+    <div class="detail-grid fade-in">
       <div>
         <p class="detail-label">POL Finance</p>
         <h3>Quantitative research at the frontier.</h3>
@@ -540,7 +680,7 @@
 <hr class="divider">
 <section class="detail-section">
   <div class="container">
-    <div class="detail-grid">
+    <div class="detail-grid fade-in">
       <div>
         <p class="detail-label">Weibull</p>
         <h3>Insurance reimagined as coordination.</h3>
@@ -568,7 +708,7 @@
 <hr class="divider">
 <section class="detail-section">
   <div class="container">
-    <div class="detail-grid">
+    <div class="detail-grid fade-in">
       <div>
         <p class="detail-label">Loom</p>
         <h3>Real-world assets, on-chain rails.</h3>
@@ -596,7 +736,7 @@
 <hr class="divider">
 <section class="detail-section">
   <div class="container">
-    <div class="detail-grid">
+    <div class="detail-grid fade-in">
       <div>
         <p class="detail-label">POL Capital</p>
         <h3>Capital markets access in Argentina.</h3>
@@ -618,16 +758,18 @@
 
 <!-- ══════════ CONTACT / CTA ══════════ -->
 <hr class="divider">
-<section class="detail-section" id="contact" style="text-align: center;">
+<section class="detail-section cta-section" id="contact">
   <div class="container">
-    <p class="detail-label">Contact</p>
-    <h3 style="font-size: 2.5rem; font-weight: 700; letter-spacing: -.03em; margin-bottom: 16px;">Let's talk.</h3>
-    <p style="font-size: 1rem; color: var(--text-secondary); max-width: 420px; margin: 0 auto 40px; line-height: 1.7;">
-      Interested in partnering, investing, or learning more about our companies? Reach out.
-    </p>
-    <a href="mailto:contact@pol.finance" class="nav-contact" style="font-size: .875rem; padding: 12px 32px;">
-      contact@pol.finance
-    </a>
+    <div class="fade-in">
+      <p class="detail-label">Contact</p>
+      <h3 style="font-size: 2.5rem; font-weight: 700; letter-spacing: -.03em; margin-bottom: 16px;">Let's talk.</h3>
+      <p style="font-size: 1rem; color: var(--text-secondary); max-width: 420px; margin: 0 auto 40px; line-height: 1.7;">
+        Interested in partnering, investing, or learning more about our companies? Reach out.
+      </p>
+      <a href="mailto:contact@pol.finance" class="cta-btn">
+        contact@pol.finance
+      </a>
+    </div>
   </div>
 </section>
 
@@ -640,6 +782,13 @@
     </div>
   </div>
 </footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
