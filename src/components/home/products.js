@@ -24,13 +24,14 @@ const COMPANIES = [
     desc:
       "A joint venture with Aligned to design and build DeFi products, bringing centralized-exchange execution quality to on-chain markets.",
   },
-  {
-    name: "Loom",
-    desc:
-      "Real-world asset infrastructure for receivable purchase agreements. Bridging traditional finance with on-chain settlement and coordination.",
-    link: "https://lambdaclass.com/loom-levenue.pdf",
-    cta: "Read",
-  },
+  // Hidden for now — may re-add later.
+  // {
+  //   name: "Loom",
+  //   desc:
+  //     "Real-world asset infrastructure for receivable purchase agreements. Bridging traditional finance with on-chain settlement and coordination.",
+  //   link: "https://lambdaclass.com/loom-levenue.pdf",
+  //   cta: "Read",
+  // },
   {
     name: "Liquid",
     desc:
@@ -146,6 +147,8 @@ const Products = () => {
               )}
             </Cell>
           ))}
+          {/* two fillers complete the 3-col grid (4 companies + 2 = 6 cells) */}
+          <Filler />
           <Filler />
         </Grid>
       </Content>

@@ -7,7 +7,7 @@ const LOGOS = [
   { src: "/images/hummingbot.png", alt: "Hummingbot" },
   { src: "/images/gattaca.png?v=2", alt: "Titan", op: 0.62, pad: 12 },
   { src: "/images/aligned-Photoroom.png", alt: "Aligned" },
-  { src: "/images/levenue.png", alt: "Levenue" },
+  // Hidden for now — may re-add later. { src: "/images/levenue.png", alt: "Levenue" },
 ]
 
 const Section = styled.div`
