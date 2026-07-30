@@ -42,7 +42,7 @@ const Brand = styled.div`
   white-space: nowrap;
 
   span {
-    font-weight: 400;
+    font-weight: 700;
     color: ${colors.fontColor};
   }
 
