@@ -26,6 +26,7 @@ const Bar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 
   @media (min-width: ${breakpoints.medium}) {
     height: 90px;
@@ -51,7 +52,10 @@ const Brand = styled.div`
 `;
 
 const NavCenter = styled.div`
-  flex: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   justify-content: center;
   align-items: center;
   gap: 44px;
