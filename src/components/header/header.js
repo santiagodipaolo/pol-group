@@ -43,7 +43,7 @@ const Brand = styled.div`
 
   span {
     font-weight: 400;
-    color: #8a8578;
+    color: ${colors.fontColor};
   }
 
   @media (min-width: ${breakpoints.medium}) {
