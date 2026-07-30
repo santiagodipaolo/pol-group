@@ -77,19 +77,7 @@ const Cell = styled.div`
   flex-direction: column;
 
   @media (min-width: ${breakpoints.large}) {
-    flex: 0 0 33.333%;
-  }
-`
-
-/* empty slot to complete the 3-column grid, same colour as the background */
-const Filler = styled.div`
-  display: none;
-
-  @media (min-width: ${breakpoints.large}) {
-    display: block;
-    flex: 0 0 33.333%;
-    border-right: 1px solid ${colors.fontColor};
-    border-bottom: 1px solid ${colors.fontColor};
+    flex: 0 0 50%;
   }
 `
 
@@ -147,9 +135,6 @@ const Products = () => {
               )}
             </Cell>
           ))}
-          {/* two fillers complete the 3-col grid (4 companies + 2 = 6 cells) */}
-          <Filler />
-          <Filler />
         </Grid>
       </Content>
     </div>
