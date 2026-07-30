@@ -1,0 +1,67 @@
+@import "src/styles/_grid.scss";
+
+body {
+  margin: 0;
+  font-family: "Metropolis", sans-serif;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #f1ede1;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+    outline: 0 !important;
+  }
+
+  a,
+  a:focus,
+  a:hover {
+    text-decoration: none;
+  }
+
+  a,
+  *:focus,
+  *:hover {
+    outline: none;
+  }
+}
+
+.scroll-down {
+  position: absolute;
+  left: 50%;
+  margin-left: -20px;
+  width: 40px;
+  height: 40px;
+  bottom: 35px;
+  padding-left: 7px;
+  cursor: pointer;
+  z-index: 2;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.scroll-down.svg svg {
+  width: 25px;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+.scroll-down.svg .stroke {
+  stroke: #fff;
+}
+.scroll-down.svg .scroller {
+  fill: #fff;
+  -webkit-animation: updown 1s infinite;
+  -moz-animation: updown 1s infinite;
+  -o-animation: updown 1s infinite;
+  animation: updown 1s infinite;
+}

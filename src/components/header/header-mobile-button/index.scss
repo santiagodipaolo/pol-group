@@ -1,0 +1,53 @@
+@import "src/styles/_animations.scss";
+
+.mobile-btn {
+  cursor: pointer;
+  padding: 5px;
+
+  .line {
+    width: 30px;
+    display: block;
+    height: 2px;
+    margin: 5px 0;
+
+    &.short {
+      width: 20px;
+    }
+
+    &.closed {
+      &.first {
+        animation-name: toggle-close-first;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+      }
+
+      &.middle {
+        display: block;
+      }
+
+      &.last {
+        animation-name: toggle-close-last;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+      }
+    }
+
+    &.opened {
+      &.first {
+        animation-name: toggle-open-first;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+      }
+
+      &.middle {
+        display: none;
+      }
+
+      &.last {
+        animation-name: toggle-open-last;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+.sg-header {
+  width: 100%;
+  top: 0;
+
+  &.opened {
+    overflow: hidden;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .contact-button {
+    height: 35px;
+    font-weight: 500 !important;
+  }
+
+  .active-link {
+    span {
+      border-bottom: solid 3px;
+      border-image: linear-gradient(
+          117.41deg,
+          #e85beb -36.95%,
+          #ff7c43 75.46%,
+          #ff4d00 199.32%
+        )
+        1;
+    }
+  }
+}
+
+/* Header: logo left (slightly indented), nav aligned to the right */
+@media (min-width: 992px) {
+  .sg-header .container > .row > div:first-child {
+    padding-left: 28px;
+  }
+  .sg-header .container > .row > div:last-child {
+    padding-right: 28px;
+    justify-content: flex-end !important;
+  }
+}
