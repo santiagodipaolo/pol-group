@@ -8,7 +8,7 @@ const HeaderNavigation = ({ onClick }) => {
   return (
     <>
       <MenuLink size="big" anchorLink={true} router={false} to="/#companies">
-        What we build
+        Companies
       </MenuLink>
       <Star />
       <MenuLink size="big" anchorLink={true} router={false} to="/#about-us">

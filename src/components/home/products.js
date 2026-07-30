@@ -128,7 +128,7 @@ const Products = () => {
     <div id="companies" className="container">
       <div className="row">
         <div className="col-12 d-lg-flex flex-lg-column center">
-          <Title>What we build</Title>
+          <Title>Companies</Title>
         </div>
       </div>
       <Content>
