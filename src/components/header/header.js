@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled, { withTheme } from "styled-components";
 import { Link } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
 
 import { colors, breakpoints } from "../../theme";
 
@@ -13,65 +12,89 @@ import LinkedIn from "../common/social-network/linkedin";
 
 import "./header.scss";
 import { Helmet } from "react-helmet";
-import { PROJECT_NAME } from "../../constants/Constants";
-
-const LogoImg = "../../../src/images/pol-logo.png";
-
-const Container = styled.div`
-  height: 100%;
-`;
 
 const Wrapper = styled.header`
   background-color: ${colors.headerBg};
-  align-items: center;
   padding: 10px 0;
 
   @media (min-width: ${breakpoints.medium}) {
-    height: 90px;
     padding: 0;
   }
 `;
-const Brand = styled.div`
-  font-family: "Metropolis";
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: ${colors.fontColor};
-  white-space: nowrap;
+
+const Bar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   @media (min-width: ${breakpoints.medium}) {
-    font-size: 16px;
+    height: 90px;
   }
 `;
+
+const Brand = styled.div`
+  font-family: "Metropolis";
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: ${colors.fontColor};
+  white-space: nowrap;
+
+  span {
+    font-weight: 400;
+    color: #8a8578;
+  }
+
+  @media (min-width: ${breakpoints.medium}) {
+    font-size: 20px;
+  }
+`;
+
+const NavCenter = styled.div`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  gap: 44px;
+`;
+
+const Right = styled.div``;
+
+const CtaButton = styled.button`
+  font-family: "Metropolis";
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: ${colors.fontColor};
+  background: transparent;
+  border: 1px solid ${colors.fontColor};
+  border-radius: 8px;
+  padding: 11px 22px;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+
+  &:hover {
+    background: ${colors.fontColor};
+    color: ${colors.lightBg};
+  }
+`;
+
 const Navigation = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 100px;
+
   & a {
     margin-bottom: 30px;
     font-size: 20px;
     font-weight: 400;
-    @media (min-width: ${breakpoints.large}) {
-      font-weight: inherit;
-      font-size: inherit;
-    }
-  }
-  @media (min-width: ${breakpoints.large}) {
-    margin-top: 0;
-    flex-direction: row;
-    & a {
-      margin-bottom: 0;
-      &.last {
-        margin-right: 0;
-      }
-    }
   }
 `;
+
 const TogglerContainer = styled.div`
-  margin-left: 25px;
   z-index: 4;
 `;
+
 const MobileMenu = styled.div`
   background-color: ${colors.headerBg};
   height: 100vh;
@@ -98,30 +121,31 @@ const Header = ({ toggleModal }) => {
       <header>
         <nav className={`sg-header${isOpen ? " opened" : ""}`}>
           <Wrapper>
-            <Container className="container">
-              <Container className="row">
-                <div
-                  className="col-8 d-flex align-items-center col-md-3"
-                  style={{ zIndex: 4 }}
-                >
-                  <Link to="/">
-                    <Brand>POL Finance Group</Brand>
-                  </Link>
-                </div>
+            <div className="container">
+              <Bar>
+                <Link to="/">
+                  <Brand>
+                    POL <span>Finance Group</span>
+                  </Brand>
+                </Link>
 
-                <div className="col-4 col-md-9 d-flex align-items-center justify-content-end">
-                  <Navigation className="d-none d-lg-flex align-items-md-center justify-content-md-end">
-                    <HeaderNavigation onClick={toggleModal} />
-                  </Navigation>
-                  <TogglerContainer className="d-lg-none">
-                    <HeaderMobileButton
-                      onClick={() => setIsOpen((open) => !open)}
-                      isOpen={isOpen}
-                    />
-                  </TogglerContainer>
-                </div>
-              </Container>
-            </Container>
+                <NavCenter className="d-none d-lg-flex">
+                  <HeaderNavigation onClick={toggleModal} />
+                </NavCenter>
+
+                <Right className="d-none d-lg-block">
+                  <CtaButton onClick={toggleModal}>Get in touch</CtaButton>
+                </Right>
+
+                <TogglerContainer className="d-lg-none">
+                  <HeaderMobileButton
+                    onClick={() => setIsOpen((open) => !open)}
+                    isOpen={isOpen}
+                  />
+                </TogglerContainer>
+              </Bar>
+            </div>
+
             {isOpen && (
               <MobileMenu className="d-flex flex-column">
                 <Navigation>
