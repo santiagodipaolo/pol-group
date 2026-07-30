@@ -56,19 +56,13 @@ const Data = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 12px;
   margin: 20px 0;
-
-  a {
-    margin: 5px 0;
-  }
 
   @media (min-width: ${breakpoints.large}) {
     flex-direction: row;
+    gap: 36px;
     margin: 0;
-
-    a {
-      margin: 0;
-    }
   }
 `
 
