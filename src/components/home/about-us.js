@@ -224,7 +224,8 @@ const AboutUs = () => {
           </Text>
           <br />
           <Text>
-            Founded and led by PhD mathematicians and economists, we bring the
+            Founded and led by Santiago Di Paolo (economist, MSc Quantitative
+            Finance) and Agustín Muñoz González (PhD Mathematics), we bring the
             standards of academic science to real capital. Where the industry
             trusts intuition, we derive and prove. We do not only advise. We
             build, and we own what we build.
