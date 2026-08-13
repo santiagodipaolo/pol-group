@@ -15,7 +15,7 @@ const COMPANIES = [
   {
     name: "propAMM",
     desc:
-      "Onchain market making built with Titan Builder, LambdaClass, and Aligned. Already past $1B in cumulative volume, at prices 1.5 bps tighter than Binance and 8 bps tighter than Uniswap on ETH.",
+      "Onchain market making built with Titan Builder, LambdaClass, and Aligned. Already past $1B in cumulative volume, at prices 1.5 bps tighter than Binance and 8 bps tighter than Uniswap on Ethereum.",
     link: "https://pamm.wtf/",
     cta: "Visit",
   },
