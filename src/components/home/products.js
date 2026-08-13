@@ -15,7 +15,7 @@ const COMPANIES = [
   {
     name: "propAMM",
     desc:
-      "The onchain venue that makes proprietary AMMs possible on Ethereum, built with Titan Builder, LambdaClass, and Aligned. Already past $1B in cumulative volume, at prices 1.5 bps tighter than Binance and 8 bps tighter than Uniswap on Ethereum.",
+      "The onchain venue that makes propAMMs possible on Ethereum, built with Titan Builder, LambdaClass, and Aligned. Already past $1B in cumulative volume.",
     link: "https://pamm.wtf/",
     cta: "Visit",
   },
