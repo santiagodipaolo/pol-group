@@ -15,6 +15,15 @@ const math4 = "../../images/math4.png"
 const math5 = "../../images/math5.png"
 const math6 = "../../images/math6.png"
 
+const NameLink = styled.a`
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  &:hover {
+    opacity: 0.7;
+  }
+`
+
 const Content = styled.div`
   width: 100%;
   @media (min-width: ${breakpoints.large}) {
@@ -224,8 +233,23 @@ const AboutUs = () => {
           </Text>
           <br />
           <Text>
-            Founded and led by Santiago Di Paolo (economist, MSc Quantitative
-            Finance) and Agustín Muñoz González (PhD Mathematics), we bring the
+            Founded and led by{" "}
+            <NameLink
+              href="https://x.com/SantiDiPaolo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Santiago Di Paolo
+            </NameLink>{" "}
+            (economist, MSc Quantitative Finance) and{" "}
+            <NameLink
+              href="https://x.com/AguuMg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Agustín Muñoz González
+            </NameLink>{" "}
+            (PhD Mathematics), we bring the
             standards of academic science to real capital. Where the industry
             trusts intuition, we derive and prove. We
             build, and we own what we build.
