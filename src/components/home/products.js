@@ -8,7 +8,7 @@ const COMPANIES = [
   {
     name: "POL Labs",
     desc:
-      "POL Labs is a boutique quantitative research firm for the hardest problems in finance. We are a group of mathematicians, economists, and engineers, most of us with PhDs.",
+      "POL Labs is a boutique quantitative research firm for the hardest problems in finance. We are a group of mathematicians, economists and engineers, and we do what most researchers never do: we take our results out of the papers and run them in live markets.",
     link: "https://www.pol.finance",
     cta: "Visit",
   },
