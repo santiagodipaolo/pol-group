@@ -8,21 +8,21 @@ const COMPANIES = [
   {
     name: "POL Labs",
     desc:
-      "A boutique quantitative research team of PhD mathematicians and economists. Economic audits, mechanism design, and independent model validation, delivered to publication standard.",
+      "A boutique quantitative research firm for the hardest problems in finance.",
     link: "https://www.pol.finance",
     cta: "Visit",
   },
   {
     name: "propAMM",
     desc:
-      "Onchain market making built with Titan Builder, LambdaClass, and Aligned. Around $10M in daily volume within two weeks of launch, at prices 1.5 bps tighter than Binance and 8 bps tighter than Uniswap on ETH.",
+      "Onchain market making built with Titan Builder, LambdaClass, and Aligned. Already past $1B in cumulative volume, at prices 1.5 bps tighter than Binance and 8 bps tighter than Uniswap on ETH.",
     link: "https://pamm.wtf/",
     cta: "Visit",
   },
   {
     name: "Zonda Markets",
     desc:
-      "A joint venture with Aligned to design and build DeFi products, bringing centralized-exchange execution quality to on-chain markets.",
+      "A joint venture with Aligned that pairs POL's quantitative researchers with top-tier zero-knowledge engineers to build the best products in DeFi.",
   },
   // Hidden for now — may re-add later.
   // {

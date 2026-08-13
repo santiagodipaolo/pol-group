@@ -227,7 +227,7 @@ const AboutUs = () => {
             Founded and led by Santiago Di Paolo (economist, MSc Quantitative
             Finance) and Agustín Muñoz González (PhD Mathematics), we bring the
             standards of academic science to real capital. Where the industry
-            trusts intuition, we derive and prove. We do not only advise. We
+            trusts intuition, we derive and prove. We
             build, and we own what we build.
           </Text>
         </Column>
