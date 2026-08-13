@@ -8,14 +8,14 @@ const COMPANIES = [
   {
     name: "POL Labs",
     desc:
-      "POL Labs is a boutique quantitative research firm for the hardest problems in finance. We are a group of mathematicians, economists and engineers, and we do what most researchers never do: we take our results out of the papers and run them in live markets.",
+      "POL Labs is a boutique quantitative research firm for the hardest problems in finance. Where most research ends on the page, POL Labs runs its results in live markets, backed by a team of mathematicians, economists and engineers.",
     link: "https://www.pol.finance",
     cta: "Visit",
   },
   {
     name: "propAMM",
     desc:
-      "Onchain market making built with Titan Builder, LambdaClass, and Aligned. Already past $1B in cumulative volume, at prices 1.5 bps tighter than Binance and 8 bps tighter than Uniswap on Ethereum.",
+      "Onchain market making venue built with Titan Builder, LambdaClass, and Aligned. Already past $1B in cumulative volume, at prices 1.5 bps tighter than Binance and 8 bps tighter than Uniswap on Ethereum.",
     link: "https://pamm.wtf/",
     cta: "Visit",
   },
