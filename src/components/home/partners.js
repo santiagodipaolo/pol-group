@@ -5,8 +5,9 @@ import { breakpoints } from "../../theme"
 const LOGOS = [
   { src: "/images/lambda.png", alt: "LambdaClass" },
   { src: "/images/hummingbot.png", alt: "Hummingbot" },
-  { src: "/images/gattaca.png?v=2", alt: "Titan", op: 0.62, pad: 12 },
+  { src: "/images/gattaca.png?v=2", alt: "Titan", pad: 12, rest: 0.4, hover: 0.55 },
   { src: "/images/aligned-Photoroom.png", alt: "Aligned" },
+  { src: "/images/UBA.svg.png", alt: "Universidad de Buenos Aires", pad: 6 },
   // Hidden for now — may re-add later. { src: "/images/levenue.png", alt: "Levenue" },
 ]
 
@@ -59,11 +60,11 @@ const Logo = styled.img`
   object-fit: contain;
   transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
   filter: grayscale(100%);
-  opacity: 0.55;
+  opacity: ${(p) => p.$rest ?? 0.55};
 
   &:hover {
     filter: grayscale(0%);
-    opacity: 1;
+    opacity: ${(p) => p.$hover ?? 1};
     transform: scale(1.08);
   }
 `
@@ -74,7 +75,7 @@ const Partners = () => (
     <Row>
       {LOGOS.map((l) => (
         <Box key={l.alt} style={l.pad ? { padding: `${l.pad}px` } : undefined}>
-          <Logo src={l.src} alt={l.alt} style={l.op ? { opacity: l.op } : undefined} />
+          <Logo src={l.src} alt={l.alt} $rest={l.rest} $hover={l.hover} />
         </Box>
       ))}
     </Row>
