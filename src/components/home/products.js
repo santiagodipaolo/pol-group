@@ -22,7 +22,7 @@ const COMPANIES = [
   {
     name: "Zonda Markets",
     desc:
-      "A joint venture with Aligned that pairs POL's quantitative researchers with top-tier zero-knowledge engineers to build the best products in DeFi.",
+      "A joint venture with Aligned that brings together quantitative research and top-tier zero-knowledge engineering to build the next generation of DeFi products.",
   },
   // Hidden for now — may re-add later.
   // {
