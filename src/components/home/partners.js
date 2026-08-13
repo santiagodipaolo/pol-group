@@ -57,11 +57,14 @@ const Logo = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: opacity 0.3s;
-  opacity: 0.85;
+  transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+  filter: grayscale(100%);
+  opacity: 0.55;
 
   &:hover {
+    filter: grayscale(0%);
     opacity: 1;
+    transform: scale(1.08);
   }
 `
 
